@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,11 @@ export class SelfAssessmentService {
 
   constructor(public http: HttpClient) { }
 
-  notifyEmployee(empData: any): Observable<any> {
-    return this.http.post('http://localhost:5600/employeeEngagement/v1/notify', empData);
+  notifyEmployee(empId: string, comments: string): Observable<any> {
+    let headers = new HttpHeaders()
+    .set('EmpId', empId)
+    .set('AppreciationDescription', comments);
+    console.log('headers: ', headers);
+    return this.http.get('http://localhost:5600/employeeEngagement/v1/notify', {headers});
   }
 }

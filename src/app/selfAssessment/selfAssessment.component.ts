@@ -21,12 +21,7 @@ export class SelfAssessmentComponent {
 
 
     submitAppreciation(reqObj): void {
-        let req = {
-            'EmpId' : reqObj[0],
-            'AppreciationDescription': reqObj[3]
-        };
-        console.log('form submitted', req);
-        this.selfAssessmentService.notifyEmployee(req).subscribe(data => {
+        this.selfAssessmentService.notifyEmployee(reqObj[0], reqObj[3]).subscribe(data => {
             console.log(data);
         });
 
