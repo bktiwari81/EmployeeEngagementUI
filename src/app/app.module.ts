@@ -15,19 +15,26 @@ import { AboutUsComponent } from './aboutUs/aboutUs.component';
 import { ContactUsComponent } from './contactUs/contactUs.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HomeService } from './service/home.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { SelfAssessmentComponent } from './selfAssessment/selfAssessment.component';
 
 @NgModule({
   declarations: [
-    AppComponent, HomeComponent, LoginComponent, AccountViewComponent, AboutUsComponent, ContactUsComponent
+    AppComponent, HomeComponent, LoginComponent, AccountViewComponent,SelfAssessmentComponent, AboutUsComponent, ContactUsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IonicModule.forRoot(),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
+    CommonModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, StatusBar,
+    HomeService,
     SplashScreen,],
   bootstrap: [AppComponent]
 })
